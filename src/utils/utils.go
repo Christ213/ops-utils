@@ -3,6 +3,8 @@ package opsutil
 import (
 	"context"
 	"database/sql"
+	"encoding/base64"
+	"errors"
 	"fmt"
 	"strconv"
 	"strings"
@@ -104,4 +106,35 @@ func DBTransactionPostgresMongo(dbMongo *mongo.Database, db *sql.DB, txFunc func
 
 	err = txFunc(tx, mongo.NewSessionContext(ctx, mongoSession))
 	return err
+}
+
+// EncryptBase64 encodes a string into base64 format
+func EncryptBase64(str string) string {
+	encoded := base64.URLEncoding.EncodeToString([]byte(str))
+	return encoded
+}
+
+// DecryptBase64 decodes a base64 string back to its original string
+func DecryptBase64(encrypt string) (string, error) {
+	decodedBytes, err := base64.URLEncoding.DecodeString(encrypt)
+	if err != nil {
+		return "", errors.New("invalid base64 string")
+	}
+	return string(decodedBytes), nil
+}
+
+// AddDayIncrementTime adds a specified number of days to the given time
+func AddDayIncrementTime(now time.Time, day int) time.Time {
+	newTime := now.Add(time.Duration(day) * 24 * time.Hour)
+	return newTime
+}
+
+func TimeBetween(start, end, check time.Time) bool {
+	if start.Before(end) {
+		return !check.Before(start) && !check.After(end)
+	}
+	if start.Equal(end) {
+		return check.Equal(start)
+	}
+	return !start.After(check) || !end.Before(check)
 }

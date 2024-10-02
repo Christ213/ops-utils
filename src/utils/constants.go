@@ -1,20 +1,16 @@
 package opsutil
 
-var (
+const (
 	//DEFAULT CONSTANT
 	YES = "YES"
 	NO  = "NO"
 
-	TRUE_VALUE         = true
-	FALSE_VALUE        = false
-	EMPTY_VALUE        = ""
-	ZERO_VALUE         = 0
-	ZERO_VALUE_INT64   = int64(0)
-	ZERO_VALUE_INT32   = int32(0)
-	ZERO_VALUE_FLOAT64 = float64(0)
-	ZERO_VALUE_FLOAT32 = float32(0)
-	YES_VALUE          = "Y"
-	NO_VALUE           = "N"
+	TRUE_VALUE  = true
+	FALSE_VALUE = false
+	EMPTY_VALUE = ""
+	ZERO_VALUE  = 0
+	YES_VALUE   = "Y"
+	NO_VALUE    = "N"
 
 	//TIMESTAMP FORMAT
 	LAYOUT_TIMESTAMP        = "2006-01-02 15:04:05"
