@@ -1,4 +1,4 @@
-package opsutil
+package opsutils
 
 const (
 	//DEFAULT CONSTANT
