@@ -1,4 +1,4 @@
-module github.com/Christ213/ops-util
+module github.com/Christ213/ops-utils
 
 go 1.16
 
