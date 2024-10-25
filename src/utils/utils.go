@@ -1,4 +1,4 @@
-package opsutil
+package opsutils
 
 import (
 	"context"
